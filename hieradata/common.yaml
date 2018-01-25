@@ -1,3 +1,9 @@
 ---
-classes:
-  - 'prometheus::node_exporter'
+:backends:
+  - yaml
+:yaml:
+  :datadir: /etc/puppetlabs/code/environments/%{::environment}/data
+:hierarchy:
+  - "node/%{::trusted.certname}"
+  - "environment/%{::environment}"
+  - "common"
