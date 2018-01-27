@@ -38,7 +38,7 @@ class protectmymail_mailserver::config {
     auth_listener_postfix_user => 'postfix',
     auth_listener_postfix_group => 'postfix',
     auth_listener_default_user => 'dovecot',
-    ssl                        => true,
+    ssl                        => 'yes',
     ssl_cert                   => '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem',
     ssl_key                    => '/etc/leysencrypt/live/mail.protectmymail.com/privkey.pem',
     imap_client_workarounds    => 'tb-extra-mailbox-sep',
