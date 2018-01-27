@@ -10,8 +10,7 @@ class protectmymail_mailserver (
 ) {
 
 
-  class { '::protectmymail_mailserver::config': } ~>
-  class { '::protectmymail_mailserver::general': } ->
+  class { '::protectmymail_mailserver::config': } ->
   Class['::protectmymail_mailserver']
 
 }
