@@ -78,7 +78,7 @@ class protectmymail_mailserver::config {
 #    smtp_tls_session_cache_database => 'btree:${data_directory}/smtp_cache',
     smtpd_sasl_type          => 'dovecot',
     smtpd_sasl_auth          => true,
-    smtpd_recipient_restrictions => ['permit_sasl_authenticated', 'permit_mynetworks', 'reject_unauth_destination']
+    smtpd_recipient_restrictions => ['permit_sasl_authenticated', 'permit_mynetworks', 'reject_unauth_destination'],
     spamassassin             => true,
   }
 }
