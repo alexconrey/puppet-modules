@@ -3,3 +3,4 @@ moduledir 'forge'
 
 mod 'puppetlabs/stdlib'
 mod 'puppet-prometheus'
+mod 'puppet-archive'
