@@ -71,7 +71,7 @@ class protectmymail_mailserver::config {
     virtual_transport        => 'lmtp:unix:private/dovecot-lmtp',
     smtpd_tls_cert_file      => '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem',
     smtpd_tls_key_file       => '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem',
-    smtpd_use_tls            => true,
+    ssl                      => true,
 #    smtpd_tls_session_cache_database => 'btree:${data_directory}/smtpd_scache',
 #    smtp_tls_session_cache_database => 'btree:${data_directory}/smtp_cache',
     smtpd_sasl_type          => 'dovecot',

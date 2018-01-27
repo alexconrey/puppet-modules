@@ -9,8 +9,6 @@ class protectmymail_mailserver (
   $mail_mynetworks      = [],
 ) {
 
-  include ::postfix::server
-
 
   class { '::protectmymail_mailserver::config': } ~>
   class { '::protectmymail_mailserver::general': } ->
