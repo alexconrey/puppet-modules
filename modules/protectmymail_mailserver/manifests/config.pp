@@ -30,7 +30,6 @@ class protectmymail_mailserver::config {
     mail_privileged_group   => 'mail',
     imaplogin_imaps_ssl     => true,
     lmtp_unix_listener      => '/var/spool/postfix/private/dovecot-lmtp',
-    lmtp_unix_listener_port => '0600',
     lmtp_unix_listener_user => 'postfix',
     lmtp_unix_listener_group => 'postfix',
     auth_listener_userdb_mode => '0600',
