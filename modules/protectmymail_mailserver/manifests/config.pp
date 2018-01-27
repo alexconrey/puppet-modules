@@ -67,9 +67,9 @@ class protectmymail_mailserver::config {
       'broken_sasl_auth_clients'  => 'yes',
       'smtpd_sasl_authenticated_header' => 'yes',
     }
-    virtual_mailbox_domains  => 'mysql:/etc/postfix/sql/domains.cf',
-    virtual_mailbox_maps     => 'mysql:/etc/postfix/sql/sender-login-maps.cf',
-    virtual_alias_maps       => 'mysql:/etc/postfix/sql/aliases.cf',
+    virtual_mailbox_domains  => ['mysql:/etc/postfix/sql/domains.cf'],
+    virtual_mailbox_maps     => ['mysql:/etc/postfix/sql/sender-login-maps.cf'],
+    virtual_alias_maps       => ['mysql:/etc/postfix/sql/aliases.cf'],
     virtual_transport        => 'lmtp:unix:private/dovecot-lmtp',
     smtpd_tls_cert_file      => '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem',
     smtpd_tls_key_file       => '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem',
