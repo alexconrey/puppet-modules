@@ -7,4 +7,5 @@ mod 'puppet-archive'
 mod 'camptocamp-systemd'
 mod 'puppet-yum'
 mod 'thias-postfix'
-mod 'jproyo-dovecot', '0.1.0'
+mod 'dovecot',
+  :git => 'https://github.com/mxhero/puppet-dovecot'

@@ -43,16 +43,15 @@ class protectmymail_mailserver::config {
     ssl_cert                   => '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem',
     ssl_key                    => '/etc/leysencrypt/live/mail.protectmymail.com/privkey.pem',
     imap_client_workarounds    => 'tb-extra-mailbox-sep',
-    auth_sql_path              => '/etc/dovecot/conf.d/dovecot-sql.conf.ext',
+#    auth_sql_path              => '/etc/dovecot/conf.d/dovecot-sql.conf.ext',
     auth_sql_userdb_static     => 'uid=vmail gid=vmail home=/srv/data/mail/%d/%n',
     
   }
 
-  file { '/etc/dovecot/conf.d/dovecot-sql.conf.ext':
+  dovecot::file { 'dovecot-sql.conf.ext':
     owner    => 'mail',
     group    => 'dovecot',
-    mode     => '0644',
-    contet   => template('protectmymail_mailserver/dovecot-sql.conf.ext.erb'),
+    content   => template('protectmymail_mailserver/dovecot-sql.conf.ext.erb'),
   }
   
   class { 'postfix::server':
