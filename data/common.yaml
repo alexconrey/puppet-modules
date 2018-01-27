@@ -1,3 +1,10 @@
 ---
 classes:
   - 'prometheus::node_exporter'
+
+packages:
+  - 'traceroute'
+  - 'tcpdump'
+  - 'vim'
+  - 'htop'
+  - 'rsync'

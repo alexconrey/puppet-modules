@@ -1,5 +1,6 @@
 node default {
-  include prometheus::node_exporter
+  $packages = hiera_array('packages', [])
+  ensure_packages($packages)
 
   hiera_include('classes', [])
 
