@@ -12,7 +12,6 @@ class protectmymail_mailserver (
   include ::postfix::server
 
 
-  class { '::protectmymail_mailserver::install': } -> 
   class { '::protectmymail_mailserver::config': } ~>
   class { '::protectmymail_mailserver::general': } ->
   Class['::protectmymail_mailserver']
