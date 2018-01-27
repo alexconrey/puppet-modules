@@ -60,10 +60,11 @@ class protectmymail_mailserver::config {
     myorigin       => '$mydomain',
     inet_interfaces => 'all',
     extra_main_parameters   => {
-      'allow_mail_to_files' => 'alias',
       'maildir_stat_dirs'   => 'yes',
       'broken_sasl_auth_clients'  => 'yes',
       'smtpd_sasl_authenticated_header' => 'yes',
+      'smtp_tls_session_cache_database' => 'btree:${data_directory}/smtp_cache',
+      'smtpd_tls_session_cache_database' => 'btree:${data_directory}/smtpd_cache',
     },
     virtual_mailbox_domains  => ['mysql:/etc/postfix/sql/domains.cf'],
     virtual_mailbox_maps     => ['mysql:/etc/postfix/sql/sender-login-maps.cf'],
@@ -78,5 +79,6 @@ class protectmymail_mailserver::config {
     smtpd_sasl_auth          => true,
     smtpd_recipient_restrictions => ['permit_sasl_authenticated', 'permit_mynetworks', 'reject_unauth_destination'],
     spamassassin             => true,
+    submission               => true,
   }
 }
