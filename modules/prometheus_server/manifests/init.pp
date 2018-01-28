@@ -1,4 +1,6 @@
 class prometheus_server {
+  
+  $servers = hiera('prometheus::server_list')
 
   class { '::prometheus':
     scrape_configs  => [{
@@ -7,7 +9,7 @@ class prometheus_server {
         'scrape_timeout'   => '10s',
         'target_groups'    => [
           {
-          'targets'    => ['localhost:9090','10.10.2.35:9090'],
+          'targets'    => $servers,
           'labels'     => {'alias' => 'Prometheus'},
           }
         ],
@@ -15,3 +17,4 @@ class prometheus_server {
   }
 
 }
+
