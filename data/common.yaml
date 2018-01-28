@@ -8,3 +8,4 @@ packages:
   - 'vim'
   - 'htop'
   - 'rsync'
+  - 'epel-release'
