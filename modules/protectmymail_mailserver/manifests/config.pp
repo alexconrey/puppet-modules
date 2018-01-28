@@ -12,15 +12,14 @@ class protectmymail_mailserver::config {
     ensure => present,
     uid    => '1002',
   }
-  
-  file { '/srv/data':
-    ensure  => directory,
-  }
-  
-  file { '/srv/data/mail':
-    ensure  => directory,
-  }
 
+  if !defined(File["${::protectmymail_mailserver::maildir}"]) {
+    file { "${::protectmymail_mailserver::maildir}":
+      ensure      => present,
+      owner       => 'vmail',
+    }
+  }
+  
   class { 'dovecot':
     protocols  =>  'imap lmtp',
     disable_plaintext_auth  => false,

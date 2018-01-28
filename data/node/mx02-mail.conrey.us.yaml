@@ -5,6 +5,8 @@ classes:
 protectmymail_mailserver::ssl_key: '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem'
 protectmymail_mailserver::ssl_cert: '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem'
 
+protectmymail_mailserver::maildir: '/srv/data/mail'
+
 protectmymail_mailserver::s3fs:
   maildir:
     s3_url: 's3://protectmymail/'
