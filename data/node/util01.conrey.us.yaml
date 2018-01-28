@@ -2,10 +2,6 @@
 classes:
   - 'prometheus_server'
 
-prometheus::server_list:
-  - 'localhost:9090'
-  - 'localhost:9100'
-  - '10.10.2.35:9100'
 
 prometheus::scrape_config:
   - job_name: 'prometheus'
