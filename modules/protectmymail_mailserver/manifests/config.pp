@@ -18,7 +18,7 @@ class protectmymail_mailserver::config {
   file { "${postfix_index_dir}":
     ensure    => directory,
     owner     => 'vmail',
-    group     => 'vmail",
+    group     => 'vmail',
   }
 
   if !defined(File["${::protectmymail_mailserver::maildir}"]) {
