@@ -1,0 +1,40 @@
+---
+classes:
+  - 'router'
+
+defaults: &defaults
+  type: tunnel
+  auto: start
+  authby: secret
+  forceencaps: 'yes'
+  salifetime: 1h
+  ikelifetime: 8h
+  ikev2: never
+  dpdaction: hold
+  dpdtimeout: 120
+  dpddelay: 30
+  compress: 'no'
+  pfs: 'yes'
+  rekey: 'yes'
+  aggrmode: 'no'
+  ike: aes128-sha1;modp1024
+  phase2alg: aes128-sha1;modp1024
+  nat-keepalive: 'yes'
+
+router::tunnels:
+  west:
+    <<: *defaults
+    left: 10.10.1.126
+    leftsubnets: '{10.10.1.0/24}'
+    leftsourceip: 10.10.1.126
+    leftid: 18.220.37.40
+    right: 52.24.112.232
+    rightsubnets: '{10.10.2.0/24}'
+    rightsourceip: 10.10.2.124
+
+router::secrets:
+  west:
+    ensure: 'present'
+    id: '18.220.37.40 52.24.112.232'
+    type: 'PSK'
+    secret: 'test 123 apples grapes bathtub pcp'
