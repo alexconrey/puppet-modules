@@ -21,7 +21,7 @@ class prometheus_server {
         'scrape_interval' => '10s',
         'scrape_timeout'  => '10s',
         'static_configs'  => [{
-          'targets'  => ['localhost:9100'],
+          'targets'  => ['localhost:9100', '10.10.2.35:9100'],
           'labels'   => { 'alias' => 'nodes' },
 	}],
       }
