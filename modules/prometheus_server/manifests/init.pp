@@ -1,6 +1,7 @@
 class prometheus_server {
   
 #  $prometheus_config = hiera_hash('prometheus::config')
+  $prometheus_nodes = hiera('prometheus::nodes', [])
 
 #  create_resources('prometheus', $prometheus_config
 
@@ -21,7 +22,8 @@ class prometheus_server {
         'scrape_interval' => '10s',
         'scrape_timeout'  => '10s',
         'static_configs'  => [{
-          'targets'  => ['localhost:9100', '10.10.2.35:9100'],
+#          'targets'  => ['localhost:9100', '10.10.2.35:9100'],
+          'targets'  => $prometheus_nodes,
           'labels'   => { 'alias' => 'nodes' },
 	}],
       }
