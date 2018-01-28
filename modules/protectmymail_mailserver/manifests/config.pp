@@ -54,7 +54,6 @@ class protectmymail_mailserver::config {
   }
   
   class { 'postfix::server':
-    mysql          => true,
     myhostname     => $::protectmymail_mailserver::mail_myhostname,
     mydomain       => $::protectmymail_mailserver::mail_mydomain,
     myorigin       => '$mydomain',
