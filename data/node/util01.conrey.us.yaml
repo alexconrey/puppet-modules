@@ -3,8 +3,10 @@ classes:
   - 'prometheus_server'
 
 
-prometheus::scrape_config:
-  prometheus:
+
+prometheus::config:
+  version: '1.8.2'
+  scrape_configs:
     - job_name: 'prometheus'
       scrape_interval: '10s'
       scrape_timeout: '10s'
@@ -14,3 +16,4 @@ prometheus::scrape_config:
             - 'localhost:9100'
           labels:
             - alias: 'Prometheus'
+
