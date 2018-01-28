@@ -1,0 +1,6 @@
+---
+classes:
+  - 'protectmymail_mailserver'
+
+protectmymail_mailserver::ssl_key: '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem'
+protectmymail_mailserver::ssl_cert: '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem'
