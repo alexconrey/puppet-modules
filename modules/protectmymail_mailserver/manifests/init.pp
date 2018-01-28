@@ -9,8 +9,12 @@ class protectmymail_mailserver (
   $mail_mynetworks      = [],
   $ssl_key              = hiera('protectmymail_mailserver::ssl_key', undef),
   $ssl_cert             = hiera('protectmymail_mailserver::ssl_cert', undef),
+  $s3fs			= hiera('protectmymail_mailserver::s3fs', undef),
 ) {
 
+  if $s3fs {
+    class { '::protectmymail_mailserver::s3fs': }
+  }
 
   class { '::protectmymail_mailserver::config': } ->
   Class['::protectmymail_mailserver']

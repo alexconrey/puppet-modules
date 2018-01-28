@@ -4,3 +4,13 @@ classes:
 
 protectmymail_mailserver::ssl_key: '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem'
 protectmymail_mailserver::ssl_cert: '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem'
+
+protectmymail_mailserver::s3fs:
+  maildir:
+    s3_url: 's3://protectmymail/'
+    local_path: '/srv/data/mail'
+    options:
+      - 'recheck-s3'
+      - 'uid 1002'
+      - 'gid 1002'
+
