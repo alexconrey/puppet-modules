@@ -75,9 +75,6 @@ class protectmymail_mailserver::config {
     smtpd_sasl_type          => 'dovecot',
     smtpd_sasl_auth          => true,
     smtpd_recipient_restrictions => ['permit_sasl_authenticated', 'permit_mynetworks', 'reject_unauth_destination'],
-    spamassassin             => true,
-    spamassassin_package     => 'spamassassin',
-    spampd_package           => undef,
     submission               => true,
   }
 }
