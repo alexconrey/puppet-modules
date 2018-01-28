@@ -64,10 +64,10 @@ class protectmymail_mailserver::config {
       'broken_sasl_auth_clients'  => 'yes',
       'smtpd_sasl_authenticated_header' => 'yes',
       'smtp_tls_session_cache_database' => 'btree:${data_directory}/smtp_cache',
-      'smtpd_tls_session_cache_database' => 'btree:${data_directory}/smtpd_cache',
+      'smtpd_tls_session_cache_database' => 'btree:${data_directory}/smtpd_scache',
     },
     virtual_mailbox_domains  => ['mysql:/etc/postfix/sql/domains.cf'],
-    virtual_mailbox_maps     => ['mysql:/etc/postfix/sql/sender-login-maps.cf'],
+    virtual_mailbox_maps     => ['mysql:/etc/postfix/sql/mailboxes.cf'],
     virtual_alias_maps       => ['mysql:/etc/postfix/sql/aliases.cf'],
     virtual_transport        => 'lmtp:unix:private/dovecot-lmtp',
     smtpd_tls_cert_file      => $::protectmymail_mailserver::ssl_cert,
@@ -76,6 +76,9 @@ class protectmymail_mailserver::config {
     smtpd_sasl_type          => 'dovecot',
     smtpd_sasl_auth          => true,
     smtpd_recipient_restrictions => ['permit_sasl_authenticated', 'permit_mynetworks', 'reject_unauth_destination'],
-    submission               => true,
+#    submission               => true,
+    master_services	     => [
+      'submission inet  n       -       n       -       -       smtpd',
+    ],
   }
 }
