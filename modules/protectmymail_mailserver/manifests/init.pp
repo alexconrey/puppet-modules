@@ -10,11 +10,11 @@ class protectmymail_mailserver (
   $ssl_key              = hiera('protectmymail_mailserver::ssl_key', undef),
   $ssl_cert             = hiera('protectmymail_mailserver::ssl_cert', undef),
   $maildir              = hiera('protectmymail_mailserver::maildir', '/var/mail'),
-  $s3_buckets           = hiera_hash('protectmymail_mailserver::s3fs', undef),
+  $nfs_mounts		= hiera_hash('protectmymail_mailserver::nfs_mounts', {}),
 ) {
 
-  if $s3_buckets {
-    class { '::protectmymail_mailserver::s3fs': }
+  if $nfs_mounts {
+    class { '::protectmymail_mailserver::nfs_mounts': }
   } 
   
   class { '::protectmymail_mailserver::config': } ->

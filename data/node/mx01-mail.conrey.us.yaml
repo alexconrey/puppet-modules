@@ -7,12 +7,10 @@ protectmymail_mailserver::ssl_cert: '/etc/letsencrypt/live/mail.protectmymail.co
 
 protectmymail_mailserver::maildir: '/srv/data/mail'
 
-protectmymail_mailserver::s3fs:
+protectmymail_mailserver::nfs_mounts:
   maildir:
-    s3_url: 's3://protectmymail/'
-    local_path: '/srv/data/mail'
-    options:
-      - 'recheck-s3'
-      - 'uid 1002'
-      - 'gid 1002'
-
+    name:       '/srv/data/mail'
+    ensure:     mounted
+    device:     '10.10.1.98:/'
+    fstype:     'nfs4'
+    options:    'nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2'
