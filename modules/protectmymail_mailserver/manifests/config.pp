@@ -44,6 +44,10 @@ class protectmymail_mailserver::config {
     imap_client_workarounds    => 'tb-extra-mailbox-sep',
 #    auth_sql_path              => '/etc/dovecot/conf.d/dovecot-sql.conf.ext',
     auth_sql_userdb_static     => 'uid=vmail gid=vmail home=/srv/data/mail/%d/%n',
+    mail_fsync			=> 'always',
+    mail_nfs_storage		=> 'yes',
+    mail_nfs_index		=> 'yes',
+    mmap_disable		=> 'yes',
     
   }
 
