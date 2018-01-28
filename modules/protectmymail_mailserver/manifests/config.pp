@@ -34,6 +34,7 @@ class protectmymail_mailserver::config {
     lmtp_unix_listener_group => 'postfix',
     auth_listener_userdb_mode => '0600',
     auth_listener_userdb_user => 'vmail',
+    include_inbox_namespace   =>  true,
 #    auth_listener_postfix_mode => '0666',
 #    auth_listener_postfix_user => 'postfix',
 #    auth_listener_postfix_group => 'postfix',
