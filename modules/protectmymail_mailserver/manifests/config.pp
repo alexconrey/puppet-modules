@@ -1,4 +1,6 @@
 class protectmymail_mailserver::config {
+  $postfix_index_dir = '/srv/data/mail_indexes'
+
 
   $postfix_files = []
 
@@ -11,6 +13,12 @@ class protectmymail_mailserver::config {
   user { 'vmail':
     ensure => present,
     uid    => '1002',
+  }
+
+  file { "${postfix_index_dir}":
+    ensure    => directory,
+    owner     => 'vmail',
+    group     => 'vmail",
   }
 
   if !defined(File["${::protectmymail_mailserver::maildir}"]) {
