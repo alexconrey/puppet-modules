@@ -24,14 +24,15 @@ defaults: &defaults
 
 router::tunnels:
   east:
-    <<: *defaults
-    left: 10.10.2.124
-    leftsubnets: '{10.10.2.0/24}'
-    leftsourceip: 10.10.2.124
-    leftid: 52.24.112.232
-    right: 18.220.37.40
-    rightsubnets: '{10.10.1.0/24}'
-    rightsourceip: 10.10.1.126
+    options:
+      <<: *defaults
+      left: 10.10.2.124
+      leftsubnets: '{10.10.2.0/24}'
+      leftsourceip: 10.10.2.124
+      leftid: 52.24.112.232
+      right: 18.220.37.40
+      rightsubnets: '{10.10.1.0/24}'
+      rightsourceip: 10.10.1.126
 
 router::secrets:
   east:
