@@ -25,7 +25,7 @@ class protectmymail_mailserver::config {
     disable_plaintext_auth  => false,
     auth_mechanisms         => 'plain login',
     auth_include            => ['sql'],
-    mail_location           => 'maildir:/srv/data/mail/%d/%n:LAYOUT=fs',
+    mail_location           => 'maildir:/srv/data/mail/%d/%n:LAYOUT=fs:INDEX=/srv/data/mail_indexes/%d/%n',
     mail_privileged_group   => 'mail',
     imaplogin_imaps_ssl     => true,
     lmtp_unix_listener      => '/var/spool/postfix/private/dovecot-lmtp',
