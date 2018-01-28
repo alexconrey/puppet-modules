@@ -7,6 +7,8 @@ class protectmymail_mailserver (
   $mail_db_port		= 3306,
   $mail_db_database     = undef,
   $mail_mynetworks      = [],
+  $ssl_key              = hiera('protectmymail_mailserver::ssl_key', undef),
+  $ssl_cert             = hiera('protectmymail_mailserver::ssl_cert', undef),
 ) {
 
 
