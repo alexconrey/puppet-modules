@@ -11,7 +11,7 @@ class protectmymail_mailserver (
   $ssl_cert             = hiera('protectmymail_mailserver::ssl_cert', undef),
   $maildir              = hiera('protectmymail_mailserver::maildir', '/var/mail'),
   $nfs_mounts		= hiera_hash('protectmymail_mailserver::nfs_mounts', {}),
-  $exporters            = hiera('protectmymail_mailserver::exporters', undef),
+  $exporters            = hiera_hash('protectmymail_mailserver::exporters', {}),
 ) {
 
   if $nfs_mounts {
@@ -25,4 +25,4 @@ class protectmymail_mailserver (
   class { '::protectmymail_mailserver::config': } ->
   Class['::protectmymail_mailserver']
 
-}
+
