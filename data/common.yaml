@@ -13,27 +13,28 @@ packages:
 
 prometheus_exporters::blackbox::modules:
   http_2xx:
-    prober: http
+    prober: 'http'
     http:
+      method: 'GET'
   http_post_2xx:
-    prober: http
+    prober: 'http'
     http:
-      method: POST
+      method: 'POST'
   tcp_connect:
-    prober: tcp
+    prober: 'tcp'
   pop3s_banner:
-    prober: tcp
+    prober: 'tcp'
     tcp:
       query_response:
-      - expect: "^+OK"
+        - expect: "^+OK"
       tls: true
       tls_config:
         insecure_skip_verify: false
   ssh_banner:
-    prober: tcp
+    prober: 'tcp'
     tcp:
       query_response:
       - expect: "^SSH-2.0-"
   icmp:
-    prober: icmp
+    prober: 'icmp'
       

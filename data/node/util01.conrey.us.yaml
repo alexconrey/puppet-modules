@@ -95,4 +95,35 @@ prometheus_server::jobs:
           target_label: 'instance'
         - target_label: '__address__'
           replacement: "10.10.1.126:9115"
+    - job_name: 'http_from_east'
+      metrics_path: '/probe'
+      params:
+        module: 
+          - 'http_2xx'
+      static_configs:
+        - targets:
+          - '10.10.1.165:9090'
+      relabel_configs:
+        - source_labels: '[__address__]'
+          target_label: '__param_target'
+        - source_labels: '[__param_target]'
+          target_label: 'instance'
+        - target_label: '__address__'
+          replacement: "10.10.1.126:9115"
+    - job_name: 'http_from_west'
+      metrics_path: '/probe'
+      params:
+        module: 
+          - 'http_2xx'
+      static_configs:
+        - targets:
+          - '10.10.1.165:9090'
+      relabel_configs:
+        - source_labels: '[__address__]'
+          target_label: '__param_target'
+        - source_labels: '[__param_target]'
+          target_label: 'instance'
+        - target_label: '__address__'
+          replacement: "10.10.2.124:9115"
+
 
