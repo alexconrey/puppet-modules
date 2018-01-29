@@ -2,13 +2,47 @@
 classes:
   - 'prometheus_server'
 
-prometheus::nodes:
-  - 'localhost:9100'
-  - '10.10.2.35:9100'
-  - '10.10.2.35:9166'
-  - '10.10.2.35:9154'
-  - '10.10.1.6:9100'
-  - '10.10.1.6:9166'
-  - '10.10.1.6:9154'
-  - '10.10.2.124:9100'
-  - '10.10.1.126:9100'
+
+prometheus_server::jobs:
+    - job_name: 'prometheus'
+      scrape_interval: '10s'
+      scrape_timeout: '10s'
+      static_configs:
+        - targets:
+          - 'localhost:9090'
+          labels:
+            alias: 'Prometheus'
+    - job_name: 'nodes'
+      scrape_interval: '10s'
+      scrape_timeout: '10s'
+      static_configs:
+        - targets:
+          - 'localhost:9100'
+          - '10.10.2.35:9100'
+          - '10.10.2.35:9166'
+          - '10.10.2.35:9154'
+          - '10.10.1.6:9100'
+          - '10.10.1.6:9166'
+          - '10.10.1.6:9154'
+          - '10.10.2.124:9100'
+          - '10.10.1.126:9100'
+          labels:
+            alias: 'nodes'
+    - job_name: 'postfix'
+      scrape_interval: '10s'
+      scrape_timeout: '10s'
+      static_configs:
+        - targets:
+          - '10.10.2.35:9154'
+          - '10.10.1.6:9154'
+          labels:
+            alias: 'postfix'
+    - job_name: 'dovecot'
+      scrape_interval: '10s'
+      scrape_timeout: '10s'
+      static_configs:
+        - targets:
+          - '10.10.2.35:9166'
+          - '10.10.1.6:9166'
+          labels:
+            alias: 'dovecot'
