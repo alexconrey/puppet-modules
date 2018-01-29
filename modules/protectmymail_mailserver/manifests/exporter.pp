@@ -1,7 +1,7 @@
-class protectmymail_mailserver::exporter(
+define protectmymail_mailserver::exporter (
   String $repo,
   $build_cmd    = '/bin/bash build_static.sh',
-  $build_path   = "/opt/${name}",
+  $build_path   = "/opt/${title}",
 ) {
   vcsrepo { "${build_path}":
     ensure   => present,
@@ -9,19 +9,19 @@ class protectmymail_mailserver::exporter(
     source   => "${repo}",
   }
 
-  exec { "build ${name}":
+  exec { "build ${title}":
     command    => "${build_cmd}",
     cwd        => "${build_path}",
     require    => Vcsrepo["${build_path}"],
   }
 
-  exec { 'copy ${name} binary':
-    command    => "/bin/cp ${build_path}/${name} /usr/local/bin",
-    require    => Exec["build ${name}"],
+  exec { 'copy ${title} binary':
+    command    => "/bin/cp ${build_path}/${title} /usr/local/bin",
+    require    => Exec["build ${title}"],
   }
 
-  file { "${name}":
-    path       => "/etc/systemd/system/${name}.service",
+  file { "${title} systemd":
+    path       => "/etc/systemd/system/${title}.service",
     ensure     => present,
     content    => template('protectmymail_mailserver/exporter.service.erb'),
   }
