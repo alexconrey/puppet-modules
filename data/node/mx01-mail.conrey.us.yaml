@@ -2,7 +2,7 @@
 classes:
   - 'protectmymail_mailserver'
 
-prometheus::exporters:
+protectmymail_mailserver::exporters:
   - name: 'postfix-exporter'
     repo: 'git://github.com/kumina/postfix_exporter'
   - name: 'dovecot-exporter'
