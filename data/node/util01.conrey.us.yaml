@@ -47,14 +47,14 @@ prometheus_server::jobs:
           - '10.10.1.6:9166'
           labels:
             alias: 'dovecot'
-    - job_name: 'blackbox'
+    - job_name: 'icmp'
       metrics_path: '/probe'
       params:
-        module: ['icmp']
+        module: '[icmp]'
       static_configs:
         - targets:
-          - 'mx01.protectmymail.com'
-          - 'mx02.protectmymail.com'
+          - '10.10.1.124'
+          - '10.10.2.126'
       relabel_configs:
         - source_labels: '[__address__]'
           target_label: '__param_target'
