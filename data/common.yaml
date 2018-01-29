@@ -9,3 +9,4 @@ packages:
   - 'htop'
   - 'rsync'
   - 'epel-release'
+  - 'git'
