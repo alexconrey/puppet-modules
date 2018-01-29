@@ -3,11 +3,9 @@ classes:
   - 'protectmymail_mailserver'
 
 prometheus::exporters:
-  postfix:
-    name: 'postfix-exporter'
+  - name: 'postfix-exporter'
     repo: 'git://github.com/kumina/postfix_exporter'
-  dovecot:
-    name: 'dovecot-exporter'
+  - name: 'dovecot-exporter'
     repo: 'git://github.com/kumina/dovecot_exporter'
 
 
