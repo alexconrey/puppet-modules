@@ -17,7 +17,7 @@ class protectmymail_mailserver (
     class { '::protectmymail_mailserver::nfs_mounts': }
   } 
   
-  class { '::protectmymail_mailserver::postfix_exporter': } ->
+  class { '::protectmymail_mailserver::exporters': } ->
   class { '::protectmymail_mailserver::config': } ->
   Class['::protectmymail_mailserver']
 
