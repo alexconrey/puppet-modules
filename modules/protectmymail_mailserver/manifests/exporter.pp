@@ -15,7 +15,7 @@ define protectmymail_mailserver::exporter (
     require    => Vcsrepo["${build_path}"],
   }
 
-  exec { 'copy ${title} binary':
+  exec { "copy ${title} binary":
     command    => "/bin/cp ${build_path}/${title} /usr/local/bin",
     require    => Exec["build ${title}"],
   }
