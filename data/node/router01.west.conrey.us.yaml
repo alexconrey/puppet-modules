@@ -1,6 +1,8 @@
 ---
 classes:
   - 'router'
+  - 'prometheus_exporters::blackbox'
+
 
 
 defaults: &defaults

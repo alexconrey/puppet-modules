@@ -47,18 +47,52 @@ prometheus_server::jobs:
           - '10.10.1.6:9166'
           labels:
             alias: 'dovecot'
-    - job_name: 'icmp'
+    - job_name: 'icmp_from_util01'
       metrics_path: '/probe'
       params:
-        module: 'icmp'
+        module: 
+          - 'icmp'
       static_configs:
         - targets:
-          - '10.10.1.124'
-          - '10.10.2.126'
+          - '10.10.1.126'
+          - '10.10.2.124'
       relabel_configs:
         - source_labels: '[__address__]'
           target_label: '__param_target'
         - source_labels: '[__param_target]'
           target_label: 'instance'
         - target_label: '__address__'
-          replacement: "%{trusted.certname}:9115"
+          replacement: "127.0.0.1:9115"
+    - job_name: 'icmp_from_west'
+      metrics_path: '/probe'
+      params:
+        module: 
+          - 'icmp'
+      static_configs:
+        - targets:
+          - '10.10.1.126'
+          - '4.2.2.1'
+      relabel_configs:
+        - source_labels: '[__address__]'
+          target_label: '__param_target'
+        - source_labels: '[__param_target]'
+          target_label: 'instance'
+        - target_label: '__address__'
+          replacement: "10.10.2.124:9115"
+    - job_name: 'icmp_from_east'
+      metrics_path: '/probe'
+      params:
+        module: 
+          - 'icmp'
+      static_configs:
+        - targets:
+          - '10.10.2.124'
+          - '4.2.2.1'
+      relabel_configs:
+        - source_labels: '[__address__]'
+          target_label: '__param_target'
+        - source_labels: '[__param_target]'
+          target_label: 'instance'
+        - target_label: '__address__'
+          replacement: "10.10.1.126:9115"
+
