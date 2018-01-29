@@ -50,7 +50,7 @@ prometheus_server::jobs:
     - job_name: 'icmp'
       metrics_path: '/probe'
       params:
-        module: '[icmp]'
+        module: 'icmp'
       static_configs:
         - targets:
           - '10.10.1.124'
