@@ -19,10 +19,19 @@ define protectmymail_mailserver::exporter (
     command    => "/bin/cp ${build_path}/${title} /usr/local/bin",
     require    => Exec["build ${title}"],
   }
+  
+  $systemd_title = regsubst($title, '_', '-')
 
-  file { "${title} systemd":
-    path       => "/etc/systemd/system/${title}.service",
+  file { "${systemd_title} systemd":
+    path       => "/etc/systemd/system/${systemd_title}.service",
     ensure     => present,
     content    => template('protectmymail_mailserver/exporter.service.erb'),
+  }
+
+  service { "${systemd_title}":
+    ensure     => running,
+    enable     => true,
+    provider   => 'systemd',
+    require    => File["${systemd_title} systemd"],
   }
 }
