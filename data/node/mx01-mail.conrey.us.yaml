@@ -2,6 +2,15 @@
 classes:
   - 'protectmymail_mailserver'
 
+prometheus::exporters:
+  postfix:
+    name: 'postfix-exporter'
+    repo: 'git://github.com/kumina/postfix_exporter'
+  dovecot:
+    name: 'dovecot-exporter'
+    repo: 'git://github.com/kumina/dovecot_exporter'
+
+
 protectmymail_mailserver::ssl_key: '/etc/letsencrypt/live/mail.protectmymail.com/privkey.pem'
 protectmymail_mailserver::ssl_cert: '/etc/letsencrypt/live/mail.protectmymail.com/fullchain.pem'
 
