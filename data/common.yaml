@@ -10,3 +10,10 @@ packages:
   - 'rsync'
   - 'epel-release'
   - 'git'
+
+prometheus_exporters::blackbox::modules:
+  icmp:
+    prober: 'icmp'
+    timeout: '5s'
+    icmp:
+      preferred_ip_protocol: 'ip4'
