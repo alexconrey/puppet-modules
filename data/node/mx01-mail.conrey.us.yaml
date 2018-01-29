@@ -4,10 +4,8 @@ classes:
 
 protectmymail_mailserver::exporters:
   postfix-exporter:
-    name: 'postfix-exporter'
     repo: 'git://github.com/kumina/postfix_exporter'
   dovecot-exporter:
-    name: 'dovecot-exporter'
     repo: 'git://github.com/kumina/dovecot_exporter'
 
 

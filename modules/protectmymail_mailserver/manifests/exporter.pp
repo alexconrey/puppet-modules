@@ -1,5 +1,4 @@
 class protectmymail_mailserver::exporter(
-  String $name,
   String $repo,
   $build_cmd    = '/bin/bash build_static.sh',
   $build_path   = "/opt/${name}",
