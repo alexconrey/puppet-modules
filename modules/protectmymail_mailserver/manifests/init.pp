@@ -25,4 +25,4 @@ class protectmymail_mailserver (
   class { '::protectmymail_mailserver::config': } ->
   Class['::protectmymail_mailserver']
 
-
+}
